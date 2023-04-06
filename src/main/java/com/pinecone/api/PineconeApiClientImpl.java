@@ -12,6 +12,7 @@ import java.lang.Exception;
 import java.lang.Override;
 import java.lang.RuntimeException;
 import java.lang.String;
+import java.util.List;
 import okhttp3.Headers;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
@@ -27,7 +28,7 @@ public final class PineconeApiClientImpl implements PineconeApiClient {
   }
 
   @Override
-  public void listCollections() {
+  public List<String> listCollections() {
     HttpUrl _httpUrl = HttpUrl.parse(this.clientOptions.environment().getUrl()).newBuilder()
       .build();Request _request = new Request.Builder()
       .url(_httpUrl)
@@ -37,7 +38,7 @@ public final class PineconeApiClientImpl implements PineconeApiClient {
     try {
       Response _response = clientOptions.httpClient().newCall(_request).execute();
       if (_response.isSuccessful()) {
-        return;
+        return ObjectMappers.JSON_MAPPER.readValue(_response.body().string(), List<String>.class);
       }
       throw new RuntimeException();
     }
@@ -117,7 +118,7 @@ public final class PineconeApiClientImpl implements PineconeApiClient {
   }
 
   @Override
-  public void listIndexes() {
+  public List<String> listIndexes() {
     HttpUrl _httpUrl = HttpUrl.parse(this.clientOptions.environment().getUrl()).newBuilder()
       .build();Request _request = new Request.Builder()
       .url(_httpUrl)
@@ -127,7 +128,7 @@ public final class PineconeApiClientImpl implements PineconeApiClient {
     try {
       Response _response = clientOptions.httpClient().newCall(_request).execute();
       if (_response.isSuccessful()) {
-        return;
+        return ObjectMappers.JSON_MAPPER.readValue(_response.body().string(), List<String>.class);
       }
       throw new RuntimeException();
     }

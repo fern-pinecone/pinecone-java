@@ -6,9 +6,10 @@ import com.pinecone.api.resources.types.CreateCollectionRequest;
 import com.pinecone.api.resources.types.CreateRequest;
 import com.pinecone.api.resources.types.IndexMeta;
 import java.lang.String;
+import java.util.List;
 
 public interface PineconeApiClient {
-  void listCollections();
+  List<String> listCollections();
 
   void createCollection(CreateCollectionRequest request);
 
@@ -16,7 +17,7 @@ public interface PineconeApiClient {
 
   void deleteCollection(String collectionName);
 
-  void listIndexes();
+  List<String> listIndexes();
 
   void createIndex(CreateRequest request);
 
