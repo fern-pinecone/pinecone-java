@@ -1,5 +1,6 @@
 package com.pinecone.api;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.pinecone.api.core.ClientOptions;
 import com.pinecone.api.core.Environment;
 import com.pinecone.api.core.ObjectMappers;
@@ -38,7 +39,7 @@ public final class PineconeApiClientImpl implements PineconeApiClient {
     try {
       Response _response = clientOptions.httpClient().newCall(_request).execute();
       if (_response.isSuccessful()) {
-        return ObjectMappers.JSON_MAPPER.readValue(_response.body().string(), List<String>.class);
+        return ObjectMappers.JSON_MAPPER.readValue(_response.body().string(), new TypeReference<List<String>>() {});
       }
       throw new RuntimeException();
     }
@@ -128,7 +129,7 @@ public final class PineconeApiClientImpl implements PineconeApiClient {
     try {
       Response _response = clientOptions.httpClient().newCall(_request).execute();
       if (_response.isSuccessful()) {
-        return ObjectMappers.JSON_MAPPER.readValue(_response.body().string(), List<String>.class);
+        return ObjectMappers.JSON_MAPPER.readValue(_response.body().string(), new TypeReference<List<String>>() {});
       }
       throw new RuntimeException();
     }

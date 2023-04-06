@@ -33,7 +33,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.github.fern-api'
             artifactId = 'pinecone'
-            version = '0.0.7'
+            version = '0.0.8'
             from components.java
         }
     }
