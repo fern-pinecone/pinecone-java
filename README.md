@@ -14,7 +14,7 @@ Check out the [sample app](.sample-app/app.java) which consumes this SDK!
 ```java
 PineconeApiClient pinecone = PineconeApiClient.builder()
     .apiKey(System.getenv("PINECONE_API_KEY"))
-    .environment(System.getenv("us-west1-gcp"))
+    .environment("us-west1-gcp")
     .build();
     
 pinecone.createIndex(CreateRequest.builder()
