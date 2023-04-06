@@ -2,10 +2,33 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.fern-api/pinecone)](https://central.sonatype.com/artifact/io.github.fern-api/pinecone/0.0.4/versions) 
 ![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.fern-api/pinecone?server=https%3A%2F%2Fs01.oss.sonatype.org)
+[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)
 
 ## Documentation
 
 API documentation is available at https://docs.pinecone.io/reference/.
+
+## Installation
+
+### Gradle users
+
+Add this dependency to your project's build file:
+
+```groovy
+implementation "io.github.fern-api:pinecone:0.0.10"
+```
+
+### Maven users
+
+Add this dependency to your project's POM:
+
+```xml
+<dependency>
+  <groupId>io.github.fern-api</groupId>
+  <artifactId>pinecone</artifactId>
+  <version>0.0.10</version>
+</dependency>
+```
 
 ## Usage
 
