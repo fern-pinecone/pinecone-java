@@ -248,8 +248,8 @@ public final class PineconeApiClientImpl implements PineconeApiClient {
     }
 
     @Override
-    public PineconeApiClient.Builder url(String url) {
-      this.environment = Environment.custom(url);
+    public PineconeApiClient.Builder environment(String environment) {
+      this.environment = Environment.custom("https://controller."  + environment + ".pinecone.io/");
       return this;
     }
 
