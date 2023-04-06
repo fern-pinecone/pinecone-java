@@ -1,31 +1,40 @@
 package com.pinecone.api;
 
-import com.pinecone.api.core.ApiKey;
-import com.pinecone.api.resources.index.indexServiceClient;
+import com.pinecone.api.resources.types.CollectionMeta;
+import com.pinecone.api.resources.types.ConfigureIndexRequest;
+import com.pinecone.api.resources.types.CreateCollectionRequest;
+import com.pinecone.api.resources.types.CreateRequest;
+import com.pinecone.api.resources.types.IndexMeta;
 import java.lang.String;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Supplier;
 
-public final class PineconeApiClient {
-  private final Supplier<indexServiceClient> indexServiceClient;
+public interface PineconeApiClient {
+  void listCollections();
 
-  public PineconeApiClient(String url, ApiKey auth) {
-    this.indexServiceClient = memoize(() -> new indexServiceClient(url, auth));
+  void createCollection(CreateCollectionRequest request);
+
+  CollectionMeta describeCollection(String collectionName);
+
+  void deleteCollection(String collectionName);
+
+  void listIndexes();
+
+  void createIndex(CreateRequest request);
+
+  IndexMeta describeIndex(String indexName);
+
+  void deleteIndex(String indexName);
+
+  void configureIndex(String indexName, ConfigureIndexRequest request);
+
+  static Builder builder() {
+    return new PineconeApiClientImpl.Builder();
   }
 
-  public final indexServiceClient index() {
-    return this.indexServiceClient.get();
-  }
+  interface Builder {
+    Builder apiKey(String apiKey);
 
-  private static <T> Supplier<T> memoize(Supplier<T> delegate) {
-    AtomicReference<T> value = new AtomicReference<>();
-    return () ->  {
-      T val = value.get();
-      if (val == null) {
-        val = value.updateAndGet(cur -> cur == null ? Objects.requireNonNull(delegate.get()) : cur);
-      }
-      return val;
-    } ;
+    Builder url(String url);
+
+    PineconeApiClient build();
   }
 }
