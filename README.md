@@ -1,29 +1,19 @@
-# Pinecone Java Library
+# {Company} Java Library
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.fern-api/pinecone)](https://central.sonatype.com/artifact/io.github.fern-api/pinecone/0.0.4/versions) 
-![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.fern-api/pinecone?server=https%3A%2F%2Fs01.oss.sonatype.org)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.fern-api/{company})](https://central.sonatype.dev/artifact/io.github.fern-api/{company}/0.0.7/versions) 
+![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.fern-api/{company}?server=https%3A%2F%2Fs01.oss.sonatype.org)
 
 ## Documentation
 
-API documentation is available at https://docs.pinecone.io/reference/.
+API documentation is available at <{docs_url}>.
 
 ## Usage
 
 Check out the [sample app](.sample-app/app.java) which consumes this SDK!
 
 ```java
-PineconeApiClient pinecone = PineconeApiClient.builder()
-    .apiKey(System.getenv("PINECONE_API_KEY"))
-    .environment(System.getenv("us-west1-gcp"))
-    .build();
-    
-pinecone.createIndex(CreateRequest.builder()
-    .name("example-index")
-    .dimension(1024)
-    .build());
-    
-List<String> activeIndexes = pinecone.listIndexes();
-System.out.println("Received active indexes from pinecone: " + activeIndexes);
+// start with env variables
+TODO
 ```
 
 ## Beta status

@@ -34,7 +34,7 @@ public interface PineconeApiClient {
   interface Builder {
     Builder apiKey(String apiKey);
 
-    Builder environment(String environment);
+    Builder url(String url);
 
     PineconeApiClient build();
   }
